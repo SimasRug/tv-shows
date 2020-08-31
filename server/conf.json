@@ -1,0 +1,8 @@
+{
+    "baseUrl": "http://api.tvmaze.com",
+    "path": {
+        "schedule": "schedule",
+        "searchShow": "search/shows?q"
+    }
+    
+}

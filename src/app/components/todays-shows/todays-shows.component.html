@@ -1,0 +1,6 @@
+<app-shows [programList]="todaysPrograms$ | async"
+        (selectedProgram)="selectProgram($event)"
+        (sortPrograms)="sort($event)"
+        (filterPrograms)="filter($event)"
+        (selectedGenre)="filterByGenre($event)">
+</app-shows>

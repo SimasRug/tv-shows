@@ -1,0 +1,33 @@
+<app-sorting [showList]="programList" (sortList)='sortingPrograms($event)' (filterList)='filterByText($event)'
+    (selectOption)='selectedOption($event)'></app-sorting>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly start" class="wrapper">
+    <!-- <div class="wrapper"> -->
+        <mat-card class="example-card" *ngFor="let show of programList" (click)="selectProgram(show)">
+            <mat-card-header>
+                <div fxLayout="row" fxLayoutAlign="space-between start">
+                    <img src={{show.show.image.medium}}>
+                    <div class="title" fxLayout="column">
+                        <div fxFlex="80">
+                            <mat-card-title> {{ show.show.name }} </mat-card-title>
+                            <mat-card-subtitle> {{show.name}} </mat-card-subtitle>
+                        </div>
+
+
+                        <div fxFlex="20">
+                            <mat-card-subtitle> Runtime: {{show.runtime}} </mat-card-subtitle>
+                            <mat-card-subtitle> Air Date: {{show.airdate}} </mat-card-subtitle>
+                        </div>
+
+
+                    </div>
+                </div>
+            </mat-card-header>
+            <hr>
+            <mat-card-content>
+                <p class="summary" [innerHTML]="show.summary"></p>
+                <p *ngIf="!show.summary">No episode description</p>
+            </mat-card-content>
+        </mat-card>
+    <!-- </div> -->
+</div>

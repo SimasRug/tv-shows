@@ -1,0 +1,24 @@
+<mat-toolbar fxLayout="row wrap"fxLayoutAlign="space-around center">
+    <h4>Filter:</h4>
+    <!-- <div> -->
+        <button mat-button *ngFor="let item of sortingItems;  let i = index"
+            (click)="sortItems(i, item.tag, item.nested)">
+            {{item.name}}
+            <mat-icon *ngIf="activeSort.name === item.name"> {{activeSort.orientation}} </mat-icon>
+        </button>
+
+        <mat-form-field class="example-form-field" floatLabel='never'>
+            <input matInput type="text" name="search" [(ngModel)]="filterText" (keyup)="filter(filterText)"
+                placeholder="Filter" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+            <mat-label>Genre</mat-label>
+            <mat-select  (selectionChange)="option($event.value)">
+                <mat-option *ngFor="let genre of genres" [value]="genre">
+                    {{genre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    <!-- </div> -->
+</mat-toolbar>

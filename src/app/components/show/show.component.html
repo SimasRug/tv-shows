@@ -1,0 +1,24 @@
+<!-- <div *ngIf="program$ | async"> -->
+<!-- {{program$ | async | json }} -->
+
+<!-- </div> -->
+
+<mat-tab-group *ngIf="program">
+    <mat-tab label="Show">
+        <div class="wrapper">
+            <mat-card  fxLayout="row wrap" fxLayoutAlign="start start">
+                <img src={{program.image.medium}}>
+                <div fxLayout="column wrap" fxLayoutAlign="start start" class="wrapper">
+                    <h1>{{program.name}}</h1>
+                    <mat-card class="summary">
+                        <p [innerHTML]="program.summary"></p>
+                    </mat-card>
+                    <p> {{program.schedule.time}} {{program.schedule.days}}</p>
+                    <p> {{program.network.name}}</p>
+                </div>
+            </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Cast"> Content 2 </mat-tab>
+    <mat-tab label="Episodes"> Content 3 </mat-tab>
+</mat-tab-group>

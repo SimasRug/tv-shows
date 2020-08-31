@@ -1,0 +1,39 @@
+.example-card {
+    max-width: 320px;
+    min-width: 320px;
+    min-height: 350px;
+    max-height: 350px;
+    margin: 10px;
+    cursor: pointer;
+
+
+    img {
+        height: 180px;
+    }
+
+    .title {
+        padding-left: 20px ;
+        height: 180px;
+    }
+
+    mat-card-header {
+        padding-bottom: 20px;;
+    }
+
+    .summary {
+        max-width: 300px;
+    }
+
+    .wrapper {
+        padding: 20px;
+    }
+
+
+
+  }
+
+
+//   .example-header-image {
+//     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+//     background-size: cover;
+//   }
