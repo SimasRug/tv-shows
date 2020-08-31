@@ -2,7 +2,9 @@
     "baseUrl": "http://api.tvmaze.com",
     "path": {
         "schedule": "schedule",
-        "searchShow": "search/shows?q"
+        "searchShow": "search/shows?q",
+        "shows": "shows",
+        "episodes": "episodes",
+        "cast": "cast"
     }
-    
 }

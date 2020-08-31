@@ -1,12 +1,12 @@
-import { ISocket } from '../types/socket.type';
 import { ProgramActions } from '../actions/programs.actions';
 import { ITvProgramsInfo } from '../types/program.type';
-import {Utils} from '../utils/utils';
 
 
 const INITIAL_STATE: ITvProgramsInfo = {
     programsInfo: [],
     selectedProgram: undefined,
+    cast: [],
+    episodes: [],
     searchedProgram: [],
     shows: [],
     sortedPrograms: [],
@@ -31,17 +31,28 @@ export function programReducer(state: ITvProgramsInfo = INITIAL_STATE, action) {
                 ...state,
                 selectedProgram: payload
             }
+
         case ProgramActions.PROGRAM_FOUND:
             return {
                 ...state,
                 searchedProgram: payload
+            }
+        case ProgramActions.PROGRAM_CAST_FOUND:
+            return {
+                ...state,
+                cast: payload
+            }
+        case ProgramActions.PROGRAM_EPISODES_FOUND:
+            return {
+                ...state,
+                episodes: payload
             }
         case ProgramActions.PROGRAM_SORTED:
             return {
                 ...state,
                 sortedPrograms: payload
             }
-            case ProgramActions.PROGRAM_SEARCHED_SORTED:
+        case ProgramActions.PROGRAM_SEARCHED_SORTED:
             return {
                 ...state,
                 searchedSortedProgram: payload

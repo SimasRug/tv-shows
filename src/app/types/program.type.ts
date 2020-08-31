@@ -1,10 +1,12 @@
 export interface ITvProgramsInfo {
-   programsInfo : ITvProgramInfo[];
-   selectedProgram: ITvProgram,
-   searchedProgram: ITvProgram[],
-   shows: ITvProgram[],
-   sortedPrograms: ITvProgramInfo[],
-   searchedSortedProgram: ITvProgramInfo[]
+    programsInfo: ITvProgramInfo[];
+    searchedProgram: ITvProgram[];
+    shows: ITvProgram[];
+    sortedPrograms: ITvProgramInfo[];
+    searchedSortedProgram: ITvProgramInfo[];
+    selectedProgram: ITvProgram;
+    cast: IProgramCast[];
+    episodes: IProgramEpisode[];
 }
 
 export interface ITvProgramInfo {
@@ -42,5 +44,26 @@ export interface ITvProgram {
     url: string;
     webChannel: any;
     weight: number;
+}
+
+export interface IProgramCast {
+    character: { id: number, url: string, name: string, image: {medium: string, original: string} };
+    person: { id: number, url: string, name: string, country: any, birthday: string, image: {medium: string, original: string} };
+    self: boolean;
+    voice: boolean;
+}
+
+export interface IProgramEpisode {
+    airdate: string;
+    airstamp: string;
+    airtime: string;
+    id: number;
+    image: string;
+    name: string;
+    number: number;
+    runtime: number;
+    season: number;
+    summary: string;
+    url: string;
 }
 

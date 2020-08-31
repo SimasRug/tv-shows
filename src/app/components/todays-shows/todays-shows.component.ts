@@ -5,6 +5,7 @@ import { IAppState } from 'src/app/types/root.type';
 import { ProgramActions } from 'src/app/actions/programs.actions';
 import { Router } from '@angular/router';
 import { ShowSortService } from 'src/app/services/sorting/show-sort.service';
+import { SocketioService } from 'src/app/services/socket-io/socketio.service';
 
 
 
@@ -23,7 +24,7 @@ export class TodaysShowsComponent implements OnInit {
   programs;
 
 
-  constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions, private router: Router, private sortService: ShowSortService) {
+  constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions, private router: Router, private sortService: ShowSortService, private socketService: SocketioService) {
     this.todaysPrograms$.subscribe(val => {
       this.programs = [...val];
     })
@@ -34,6 +35,7 @@ export class TodaysShowsComponent implements OnInit {
 
   selectProgram(program) {
     this.ngRedux.dispatch(this.programActions.programSelected(program));
+    this.socketService.getSelectedProgramDetails(program.id);
     const { name } = program;
     this.router.navigate([`show/${name}`]);
   }
@@ -67,7 +69,4 @@ export class TodaysShowsComponent implements OnInit {
     });
 
   }
-
-
-
 }

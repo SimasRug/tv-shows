@@ -38,7 +38,16 @@ export class SocketioService {
     this.socket.on('shows-found', (val) => {
       this.ngRedux.dispatch(this.programActions.programsFound(val));
       this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(val));
-    })
+    });
+
+    this.socket.on('cast-found', (val) => {      
+      this.ngRedux.dispatch(this.programActions.programCastFound(val));
+    });
+
+    this.socket.on('episodes-found', (val) => {
+      this.ngRedux.dispatch(this.programActions.programEpisodesFound(val));
+
+    });
   }
 
 
@@ -48,6 +57,10 @@ export class SocketioService {
   }
   searchProgram(program) {
     this.socket.emit('search-program', program);
+  }
+  getSelectedProgramDetails(programId) {
+    this.socket.emit('get-cast', programId);
+    this.socket.emit('get-episodes', programId);
   }
 
 
