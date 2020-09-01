@@ -1,11 +1,9 @@
 <form (ngSubmit)="findProgram(searchShow)">
-   <mat-form-field class="example-form-field">
-    <input matInput type="text" name="search" [(ngModel)]="searchShow">
-    <button class="searchBtn" mat-button matSuffix mat-icon-button aria-label="Search" type="submit">
-        <mat-icon>search</mat-icon>
-    </button>
-    <!-- <button mat-button *ngIf="searchShow" matSuffix mat-icon-button aria-label="Clear" (click)="searchShow=''">
-        <mat-icon>close</mat-icon>
-    </button> -->
-</mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" name="search" [(ngModel)]="searchShow">
+        <button class="searchBtn" mat-button matSuffix mat-icon-button aria-label="Search" type="submit"
+            [disabled]="searchShow === ''">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
 </form>

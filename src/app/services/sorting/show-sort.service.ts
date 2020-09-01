@@ -24,7 +24,7 @@ export class ShowSortService {
     return  this.nestedSortByValue(obj, val).reverse()
   }
 
-  sort(obj, val) {
+  sort(obj, val: {direction: string, tag: string, nested: boolean}) {
 
     if(val.direction === 'normal') {
       return val.nested ? this.nestedSortByValue(obj, val.tag) :  this.sortByValue(obj, val.tag);

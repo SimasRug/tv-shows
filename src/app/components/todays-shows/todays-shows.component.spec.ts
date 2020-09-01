@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodaysShowsComponent } from './todays-shows.component';
+import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { ProgramActions } from 'src/app/actions/programs.actions';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SocketActions } from 'src/app/actions/socket.actions';
 
 describe('TodaysShowsComponent', () => {
   let component: TodaysShowsComponent;
@@ -8,7 +12,9 @@ describe('TodaysShowsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodaysShowsComponent ]
+      declarations: [ TodaysShowsComponent ],
+      imports: [NgReduxTestingModule, RouterTestingModule],
+      providers: [ProgramActions, SocketActions]
     })
     .compileComponents();
   }));

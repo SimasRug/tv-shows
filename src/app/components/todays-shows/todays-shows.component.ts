@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { select, NgRedux } from '@angular-redux/store';
-import { Observable } from 'rxjs';
 import { IAppState } from 'src/app/types/root.type';
 import { ProgramActions } from 'src/app/actions/programs.actions';
 import { Router } from '@angular/router';
 import { ShowSortService } from 'src/app/services/sorting/show-sort.service';
 import { SocketioService } from 'src/app/services/socket-io/socketio.service';
+import { Observable } from 'rxjs';
+import { ITvProgramInfo } from 'src/app/types/program.type';
 
 
 
@@ -17,9 +18,8 @@ import { SocketioService } from 'src/app/services/socket-io/socketio.service';
 export class TodaysShowsComponent implements OnInit {
 
 
-  @select(['programs', 'sortedPrograms']) readonly todaysPrograms$;
-  @select(['programs', 'programsInfo']) readonly todaysProgramsOrg$;
-  @select(['programs', 'shows']) readonly todayShows$;
+  @select(['programs', 'sortedPrograms']) readonly todaysPrograms$: Observable<ITvProgramInfo[]>;
+  @select(['programs', 'programsInfo']) readonly todaysProgramsOrg$ : Observable<ITvProgramInfo[]>;
 
   programs;
 

@@ -22,8 +22,8 @@ import { ShowComponent } from './components/show/show.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchContainerComponent } from './components/search-container/search-container.component';
-import { ShowsComponent } from './components/shows/shows.component';
 import { SortingComponent } from './components/sorting/sorting.component';
+import { ShowsComponent } from './components/shows/shows.component';
 
 
 
@@ -50,6 +50,7 @@ import { SortingComponent } from './components/sorting/sorting.component';
     FlexLayoutModule,
 
   ],
+  exports:[MaterialImportsModule],
   providers: [SocketioService, ShowSortService],
   bootstrap: [AppComponent]
 })

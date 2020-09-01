@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select } from '@angular-redux/store';
 import { Router, Route } from '@angular/router';
@@ -7,7 +7,8 @@ import { ITvProgram, IProgramCast, IProgramEpisode } from 'src/app/types/program
 @Component({
   selector: 'app-show',
   templateUrl: './show.component.html',
-  styleUrls: ['./show.component.scss']
+  styleUrls: ['./show.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowComponent implements OnInit {
 

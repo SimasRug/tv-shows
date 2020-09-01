@@ -58,7 +58,7 @@ export interface IProgramEpisode {
     airstamp: string;
     airtime: string;
     id: number;
-    image: string;
+    image: {medium: string, original: string};
     name: string;
     number: number;
     runtime: number;

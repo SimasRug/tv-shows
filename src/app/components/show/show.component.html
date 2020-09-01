@@ -2,37 +2,62 @@
     <mat-tab label="Show">
         <div class="wrapper">
             <mat-card fxLayout="row wrap" fxLayoutAlign="start start">
-                <img src={{program.image.medium}}>
+                <img *ngIf="program.image" src={{program.image.medium}}>
                 <div fxLayout="column wrap" fxLayoutAlign="start start" class="wrapper">
                     <h1>{{program.name}}</h1>
                     <mat-card class="summary">
                         <p [innerHTML]="program.summary"></p>
                     </mat-card>
-                    <p> {{program.schedule.time}}</p>
-                    <p>{{program.schedule.days}}</p>
-                    <p> {{program.network.name}}</p>
+                    <p> Air Time: {{program.schedule.time}}</p>
+                    <p> Air days: {{program.schedule.days}}</p>
+                    <p> Channel: {{program.network.name}}</p>
                 </div>
             </mat-card>
         </div>
     </mat-tab>
     <mat-tab label="Cast" *ngIf="cast">
+
+
+        <!-- TODO Add virtual scrolling, long list chugs -->
         <div class="wrapper">
             <mat-card fxLayout="row wrap" fxLayoutAlign="start start">
+
+                <h4 *ngIf="cast.length === 0">
+                    No Cast documented
+                </h4>
 
                 <mat-list>
                     <mat-list-item *ngFor="let member of cast">
-                        <img   mat-card-avatar *ngIf="member.person.image" src={{member.person.image.medium}} alt="">
-                        {{member.person.name}}
+                        <img mat-card-avatar *ngIf="member.person.image" src={{member.person.image.medium}} alt="">
+                        <div mat-line> {{member.person.name}} as <span class="mat-subheading-2">
+                                {{member.character.name}} </span> </div>
+                        <mat-divider></mat-divider>
                     </mat-list-item>
                 </mat-list>
+
             </mat-card>
         </div>
+
     </mat-tab>
-    <mat-tab label="Episodes">
+    <mat-tab label="Episodes" *ngIf="episodes">
         <div class="wrapper">
             <mat-card fxLayout="row wrap" fxLayoutAlign="start start">
 
-                {{episodes | json}}
+                <h4 *ngIf="cast.length === 1">
+                    No Cast documented
+                </h4>
+
+                <mat-list>
+                    <mat-list-item *ngFor="let episode of episodes">
+                        <img mat-card-avatar *ngIf="episode.image" src={{episode.image.medium}} alt="">
+                        <div mat-line> Episode name: {{episode.name}} </div>
+                        <div mat-line> Episode number: {{episode.number}} </div>
+                        <div mat-line> Episode date: {{episode.airdate}} </div>
+                        <mat-divider></mat-divider>
+
+
+                    </mat-list-item>
+                </mat-list>
 
             </mat-card>
         </div>

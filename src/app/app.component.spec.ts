@@ -1,16 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { SocketActions } from './actions/socket.actions';
+import { ProgramActions } from './actions/programs.actions';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        NgReduxTestingModule,
       ],
       declarations: [
         AppComponent
       ],
+      providers: [SocketActions, ProgramActions]
     }).compileComponents();
   }));
 
@@ -26,10 +31,6 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('tv-show');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('tv-show app is running!');
+  it('', () => {
   });
 });
