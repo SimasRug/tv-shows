@@ -19,9 +19,9 @@ In order to run this project in development mode:
  ### Development process
 
 
-To handle all the Api calls a node server was created. After defining all the major Api calls socket.IO was chosen to communicate with the Angular app. <br><br>
+To handle all the Api calls a node server was created. After, defining all the major Api calls socket.IO was chosen to communicate with the Angular app. <br><br>
 
- On the Angular side a service was created to handle socket communication. Afterwards to keep state in application Redux was implemented, this required to create types, actions and reducers, for the majority of functionality of the app.
+ On the Angular side, a service was created to handle socket communication. Afterwards, to keep state, Redux was implemented, this required to create types, actions and reducers, for the majority of functionality of the app.
  <br><br>
 
-After the app state was functional components and sub-components were created to display data held in the state. Later on some additional functionality was added.: sorting, filtering.
+After the app state was functional, components and sub-components were created to display the data held in state. Later on, some additional functionality was added.: sorting, filtering.
