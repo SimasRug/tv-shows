@@ -23,30 +23,5 @@ To handle all the Api calls a node server was created. After defining all the ma
 
  On the Angular side a service was created to handle socket communication. Afterwards to keep state in application Redux was implemented, this required to create types, actions and reducers, for the majority of functionality of the app.
  <br><br>
- 
+
 After the app state was functional components and sub-components were created to display data held in the state. Later on some additional functionality was added.: sorting, filtering.
-
-
-
-
-<!-- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md). -->
