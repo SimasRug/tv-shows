@@ -14,7 +14,8 @@ export class ShowsComponent implements OnInit {
   @Output() selectedGenre = new EventEmitter;
 
 
-  constructor() { }
+
+  constructor() {}
 
   ngOnInit(): void {
   }

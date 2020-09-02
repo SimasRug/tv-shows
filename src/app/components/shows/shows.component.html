@@ -1,7 +1,7 @@
-<app-sorting [nonFunctioning]="programList.length ? false : true" (sortList)='sortingPrograms($event)' (filterList)='filterByText($event)'
+<app-sorting [nonFunctioning]="!programList?.length" (sortList)='sortingPrograms($event)' (filterList)='filterByText($event)'
     (selectOption)='selectedOption($event)'></app-sorting>
 
-<div *ngIf="programList.length" fxLayout="row wrap" fxLayoutAlign="space-evenly start" class="wrapper">
+<div *ngIf="programList" fxLayout="row wrap" fxLayoutAlign="space-evenly start" class="wrapper">
     <!-- <div class="wrapper"> -->
     <mat-card class="example-card" *ngFor="let show of programList" (click)="selectProgram(show)">
         <mat-card-header>
@@ -12,7 +12,8 @@
                     <div fxFlex="80">
                         <mat-card-title> {{ show.show.name }} </mat-card-title>
                         <!-- TODO ADD PIPE -->
-                        <mat-card-subtitle *ngIf="show.name"> {{(show.name.length>50)? (show.name | slice:0:50)+'..':(show.name)}}
+                        <mat-card-subtitle *ngIf="show.name"> 
+                            {{(show.name.length>50)? (show.name | slice:0:50)+'..': (show.name)}}
                         </mat-card-subtitle>
                     </div>
 
@@ -37,4 +38,4 @@
 </div>
 
 
-<div *ngIf="!programList.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No Tv-shows found</div>
+<div *ngIf="!programList?.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No Tv-shows found</div>
