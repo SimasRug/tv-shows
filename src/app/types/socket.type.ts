@@ -1,3 +1,4 @@
 export interface ISocket {
-   connected: boolean
-  }
+   connected: boolean;
+   error: { status: number, message: string, userMessage: string };
+}

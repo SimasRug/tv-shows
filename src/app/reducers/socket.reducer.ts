@@ -2,7 +2,8 @@ import { ISocket } from '../types/socket.type';
 import { SocketActions } from '../actions/socket.actions';
 
 const INITIAL_STATE: ISocket = {
-    connected: false
+    connected: false,
+    error: undefined
 };
 
 export function socketReducer(state: ISocket = INITIAL_STATE, action) {
@@ -17,6 +18,11 @@ export function socketReducer(state: ISocket = INITIAL_STATE, action) {
             return {
                 ...state,
                 connected: false
+            }
+            case SocketActions.API_ERROR:
+            return {
+                ...state,
+                error: payload
             }
     }
 

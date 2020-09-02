@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SortingComponent implements OnInit {
 
-  @Input() showList
+  @Input() nonFunctioning
   @Output() sortList = new EventEmitter;
   @Output() filterList = new EventEmitter;
   @Output() selectOption = new EventEmitter;
@@ -29,7 +29,7 @@ export class SortingComponent implements OnInit {
     up: 'arrow_upward',
     down: 'arrow_downward'
   }
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }

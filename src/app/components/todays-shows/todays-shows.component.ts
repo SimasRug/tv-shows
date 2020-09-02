@@ -19,7 +19,7 @@ export class TodaysShowsComponent implements OnInit {
 
 
   @select(['programs', 'sortedPrograms']) readonly todaysPrograms$: Observable<ITvProgramInfo[]>;
-  @select(['programs', 'programsInfo']) readonly todaysProgramsOrg$ : Observable<ITvProgramInfo[]>;
+  @select(['programs', 'programsInfo']) readonly todaysProgramsOrg$: Observable<ITvProgramInfo[]>;
 
   programs;
 
@@ -59,14 +59,15 @@ export class TodaysShowsComponent implements OnInit {
 
   filterByGenre(genre: string) {
 
-    this.todaysProgramsOrg$.subscribe(val => {
-      const programsCopy = [...val];
-      if (genre === '') {
+    if (genre === '') {
+      this.todaysProgramsOrg$.subscribe(val => {
+        const programsCopy = [...val];
         this.ngRedux.dispatch(this.programActions.sortPrograms(programsCopy));
-        return;
-      }
-      this.ngRedux.dispatch(this.programActions.sortPrograms(this.sortService.filterGenre(this.programs, genre)));
-    });
+      });
+      return;
+    }
+    
+    this.ngRedux.dispatch(this.programActions.sortPrograms(this.sortService.filterGenre(this.programs, genre)));
 
   }
 }

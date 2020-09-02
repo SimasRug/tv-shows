@@ -22,4 +22,24 @@ describe('ShowsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should emit on sortingPrograms', () => {
+    spyOn(component.sortPrograms, 'emit');
+    component.sortingPrograms('test')
+    expect(component.sortPrograms.emit).toHaveBeenCalledWith('test'); 
+  }); 
+  it('should emit on filterByText', () => {
+    spyOn(component.filterPrograms, 'emit');
+    component.filterByText('test')
+    expect(component.filterPrograms.emit).toHaveBeenCalledWith('test');
+  }); 
+  it('should emit on selectedOption', () => {
+    spyOn(component.selectedGenre, 'emit');
+    component.selectedOption('test')
+    expect(component.selectedGenre.emit).toHaveBeenCalledWith('test'); 
+  });
+  it('should emit on selectProgram', () => {
+    spyOn(component.selectedProgram, 'emit');
+    component.selectProgram({show: 'test'})
+    expect(component.selectedProgram.emit).toHaveBeenCalledWith('test'); 
+  });
 });

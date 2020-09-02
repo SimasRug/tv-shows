@@ -14,20 +14,26 @@ import { ProgramActions } from 'src/app/actions/programs.actions';
 export class SocketioService {
 
   socket;
+  foo = false; 
 
   constructor(private ngRedux: NgRedux<IAppState>, private socketActions: SocketActions, private programActions: ProgramActions) {
     this.socket = io(environment.socketUrl);
 
     this.socket.on('connect', () => {
       this.ngRedux.dispatch(this.socketActions.connectionSucceeded());
-    })
+    });
 
     this.socket.on('disconnect', () => {
       this.ngRedux.dispatch(this.socketActions.connectionLost());
-    })
+    });
+
+    this.socket.on('data-err', (val) => {
+     this.ngRedux.dispatch(this.socketActions.apiError(val));
+    });
 
 
     this.socket.on('tv-schedule', (val) => {
+
       this.ngRedux.dispatch(this.programActions.programsLoaded(val));
       this.ngRedux.dispatch(this.programActions.sortPrograms(val));
 
