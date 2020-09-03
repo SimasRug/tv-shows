@@ -29,4 +29,12 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('should check if searchForProgram triggers service', () => {
+    const service = TestBed.get(SocketioService);
+    const spy = spyOn(service, 'searchProgram')
+    component.searchForProgram('test');
+    expect(spy).toHaveBeenCalledWith('test');
+
+  });  
 });

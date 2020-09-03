@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Isort } from '../../types/sort.types'
+import { ITvProgram } from 'src/app/types/program.type';
 
 @Component({
   selector: 'app-shows',
@@ -20,13 +22,13 @@ export class ShowsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sortingPrograms(val) {   
+  sortingPrograms(val: Isort) {   
     this.sortPrograms.emit(val);
   }
-  filterByText(val) { 
+  filterByText(val: string) { 
     this.filterPrograms.emit(val);
   }
-  selectedOption(val) {
+  selectedOption(val: string) {
     this.selectedGenre.emit(val);
   }
   selectProgram({show}) {

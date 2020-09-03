@@ -67,7 +67,7 @@ export class ProgramActions {
       payload
     };
   }
-  sortSearchedPrograms(payload: ITvProgramInfo[] ) {
+  sortSearchedPrograms(payload: ITvProgram[] ) {
     return {
       type: ProgramActions.PROGRAM_SEARCHED_SORTED,
       payload

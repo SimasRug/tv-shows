@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketioService } from 'src/app/services/socket-io/socketio.service';
 import { Router } from '@angular/router';
+import { ITvProgram } from 'src/app/types/program.type';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  searchForProgram(program) {
+  searchForProgram(program: string) {
     this.socketService.searchProgram(program);
     this.router.navigate(['search']);
     

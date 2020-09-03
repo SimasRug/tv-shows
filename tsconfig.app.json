@@ -3,7 +3,8 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "module": "ES2015",
+    "types": ["core-js"]
   },
   "files": [
     "src/main.ts",

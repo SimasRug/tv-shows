@@ -1,4 +1,10 @@
 export interface ISocket {
    connected: boolean;
-   error: { status: number, message: string, userMessage: string };
+   error: Ierror
 }
+
+export interface Ierror {
+   status: number;
+   message: string;
+   userMessage: string
+};

@@ -8,12 +8,12 @@
 
         <mat-form-field class="example-form-field" floatLabel='never'>
             <input matInput type="text" name="search" [(ngModel)]="filterText" (keyup)="filter(filterText)"
-                placeholder="Filter" autocomplete="off" [disabled]="nonFunctioning">
+                placeholder="Filter" autocomplete="off">
         </mat-form-field>
 
         <mat-form-field class="example-form-field">
             <mat-label>Genre</mat-label>
-            <mat-select  (selectionChange)="option($event.value)" [disabled]="nonFunctioning">
+            <mat-select  (selectionChange)="option($event.value)">
                 <mat-option *ngFor="let genre of genres" [value]="genre">
                     {{genre}}
                 </mat-option>

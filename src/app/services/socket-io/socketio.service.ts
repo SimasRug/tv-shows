@@ -5,6 +5,8 @@ import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'src/app/types/root.type';
 import { SocketActions } from 'src/app/actions/socket.actions';
 import { ProgramActions } from 'src/app/actions/programs.actions';
+import { Ierror } from 'src/app/types/socket.type';
+import { ITvProgramInfo, ITvProgram, IProgramCast, IProgramEpisode } from 'src/app/types/program.type';
 
 
 
@@ -14,7 +16,6 @@ import { ProgramActions } from 'src/app/actions/programs.actions';
 export class SocketioService {
 
   socket;
-  foo = false; 
 
   constructor(private ngRedux: NgRedux<IAppState>, private socketActions: SocketActions, private programActions: ProgramActions) {
     this.socket = io(environment.socketUrl);
@@ -27,30 +28,28 @@ export class SocketioService {
       this.ngRedux.dispatch(this.socketActions.connectionLost());
     });
 
-    this.socket.on('data-err', (val) => {
-     this.ngRedux.dispatch(this.socketActions.apiError(val));
+    this.socket.on('data-err', (val: Ierror) => {
+     this.ngRedux.dispatch(this.socketActions.apiError(val)); 
     });
 
 
-    this.socket.on('tv-schedule', (val) => {
+    this.socket.on('tv-schedule', (val: ITvProgramInfo[]) => {
 
       this.ngRedux.dispatch(this.programActions.programsLoaded(val));
       this.ngRedux.dispatch(this.programActions.sortPrograms(val));
 
-      // const onlyShows = val.map((({ show }) => show));
-      // this.ngRedux.dispatch(this.programActions.showsLoaded(onlyShows))
     });
 
-    this.socket.on('shows-found', (val) => {
+    this.socket.on('shows-found', (val: ITvProgram[] ) => {
       this.ngRedux.dispatch(this.programActions.programsFound(val));
       this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(val));
     });
 
-    this.socket.on('cast-found', (val) => {      
+    this.socket.on('cast-found', (val: IProgramCast[]) => {      
       this.ngRedux.dispatch(this.programActions.programCastFound(val));
     });
 
-    this.socket.on('episodes-found', (val) => {
+    this.socket.on('episodes-found', (val: IProgramEpisode[]) => {
       this.ngRedux.dispatch(this.programActions.programEpisodesFound(val));
 
     });
@@ -61,12 +60,12 @@ export class SocketioService {
   getSchedule() {
     this.socket.emit('get-tv-schedule');
   }
-  searchProgram(program) {
+  searchProgram(program: string) {
     this.socket.emit('search-program', program);
   }
   getSelectedProgramDetails(programId) {
     this.socket.emit('get-cast', programId);
-    this.socket.emit('get-episodes', programId);
+    this.socket.emit('get-episodes', programId); 
   }
 
 

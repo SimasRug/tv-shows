@@ -45,5 +45,15 @@ describe('ShowSortService', () => {
     expect(arr).toEqual(sortedArr);
   })
 
+  it('should test sort reverse', () => {
+
+    let arr = [{show:{name: 'a'}}, {show:{name: 'b'}}, {show:{name: 'c'}}];
+    let sortedArr = [{show:{name: 'c'}}, {show:{name: 'b'}}, {show:{name: 'a'}}];
+
+    arr = service.sort(arr, {direction:'reverse', tag: 'name', nested: true})
+
+    expect(arr).toEqual(sortedArr); 
+  })
+
 
 });

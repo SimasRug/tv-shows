@@ -1,4 +1,4 @@
-import { ISocket } from '../types/socket.type';
+import { ISocket, Ierror } from '../types/socket.type';
 import { SocketActions } from '../actions/socket.actions';
 
 const INITIAL_STATE: ISocket = {

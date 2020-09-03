@@ -33,11 +33,11 @@ export class SearchContainerComponent implements OnInit {
     this.router.navigate([`show/${name}`]);
   }
 
-  sort(val) {
+  sortProg(val) {
     this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(this.sortService.sort(this.programs, val)));
   }
 
-  filter(val: string) {
+  filterProg(val: string) {
 
     if (val === '') {
       this.programs$.subscribe(val => {
@@ -62,5 +62,4 @@ export class SearchContainerComponent implements OnInit {
     });
 
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select } from '@angular-redux/store';
 import { Router, Route } from '@angular/router';
@@ -17,10 +17,10 @@ export class ShowComponent implements OnInit {
   @select(['programs', 'episodes']) readonly episodes$: Observable<IProgramEpisode[]>;
 
   program: ITvProgram;
-  cast: IProgramCast[];
+  cast : IProgramCast[];
   episodes: IProgramEpisode[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, changeDetectorRef: ChangeDetectorRef) {
     this.program$.subscribe(val => {
       this.program = val;
     });

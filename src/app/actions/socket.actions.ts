@@ -1,4 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Ierror } from '../types/socket.type';
+
 
 
 
@@ -21,7 +23,7 @@ export class SocketActions {
     };
   }
 
-  apiError(payload) {
+  apiError(payload: Ierror ) {
     return {
       type: SocketActions.API_ERROR,
       payload,

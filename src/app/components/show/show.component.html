@@ -1,65 +1,55 @@
-<mat-tab-group *ngIf="program">
-    <mat-tab label="Show">
+<mat-tab-group>
+    <mat-tab label="Show" *ngIf="program">
         <div class="wrapper">
             <mat-card fxLayout="row wrap" fxLayoutAlign="start start">
                 <img *ngIf="program.image" src={{program.image.medium}}>
                 <div fxLayout="column wrap" fxLayoutAlign="start start" class="wrapper">
-                    <h1>{{program.name}}</h1>
-                    <mat-card class="summary">
-                        <p [innerHTML]="program.summary"></p>
+                    <h1 *ngIf="program?.name">{{program.name}}</h1>
+                    <mat-card class="summary" [innerHTML]="program.summary">
                     </mat-card>
-                    <p> Air Time: {{program.schedule.time}}</p>
-                    <p> Air days: {{program.schedule.days}}</p>
-                    <p> Channel: {{program.network.name}}</p>
+                    <div mat-line> Air Time: {{program.schedule.time}}</div>
+                    <div mat-line> Air days: {{program.schedule.days}}</div>
+                    <div mat-line *ngIf="program.network?.name"> Channel: {{program.network.name}}</div>
                 </div>
             </mat-card>
         </div>
     </mat-tab>
     <mat-tab label="Cast" *ngIf="cast">
 
-
-        <!-- TODO Add virtual scrolling, long list chugs -->
-        <div class="wrapper">
-            <mat-card fxLayout="row wrap" fxLayoutAlign="start start">
-
-                <h4 *ngIf="cast.length === 0">
-                    No Cast documented
-                </h4>
-
+        <cdk-virtual-scroll-viewport itemSize="10" class="example-viewport">
+            <mat-card>
+                <div *ngIf="!cast?.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No cast provided</div>
                 <mat-list>
-                    <mat-list-item *ngFor="let member of cast">
-                        <img mat-card-avatar *ngIf="member.person.image" src={{member.person.image.medium}} alt="">
-                        <div mat-line> {{member.person.name}} as <span class="mat-subheading-2">
-                                {{member.character.name}} </span> </div>
+                    <mat-list-item *cdkVirtualFor="let member of cast" class="example-item">
+                        <div class="list-items">
+                            <img mat-card-avatar *ngIf="member.person.image" src={{member.person.image.medium}} alt="">
+                            <div> {{member.person.name}} as <span class="mat-subheading-2">
+                                    {{member.character.name}} </span> </div>
+                        </div>
                         <mat-divider></mat-divider>
                     </mat-list-item>
                 </mat-list>
-
             </mat-card>
-        </div>
+        </cdk-virtual-scroll-viewport>
 
     </mat-tab>
     <mat-tab label="Episodes" *ngIf="episodes">
-        <div class="wrapper">
-            <mat-card fxLayout="row wrap" fxLayoutAlign="start start">
 
-                <h4 *ngIf="cast.length === 1">
-                    No Cast documented
-                </h4>
 
+        <cdk-virtual-scroll-viewport itemSize="10" class="example-viewport">
+            <mat-card>
+                <div *ngIf="!episodes?.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No episodes provided</div>
                 <mat-list>
-                    <mat-list-item *ngFor="let episode of episodes">
-                        <img mat-card-avatar *ngIf="episode.image" src={{episode.image.medium}} alt="">
-                        <div mat-line> Episode name: {{episode.name}} </div>
-                        <div mat-line> Episode number: {{episode.number}} </div>
-                        <div mat-line> Episode date: {{episode.airdate}} </div>
+                    <mat-list-item *cdkVirtualFor="let episode of episodes" class="example-item">
+                            <img mat-card-avatar *ngIf="episode.image" src={{episode.image.medium}} alt="">
+                            <div mat-line> Episode name: {{episode.name}} </div>
+                            <div mat-line> Episode number: {{episode.number}} </div>
+                            <div mat-line> Episode date: {{episode.airdate}} </div>
                         <mat-divider></mat-divider>
-
-
                     </mat-list-item>
                 </mat-list>
-
             </mat-card>
-        </div>
+        </cdk-virtual-scroll-viewport>
+
     </mat-tab>
 </mat-tab-group>

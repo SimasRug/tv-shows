@@ -13,3 +13,18 @@ mat-list {
 .mat-list-item {
     padding: 10px;
 }
+
+.example-viewport {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 155px);
+    margin: 20px;
+
+    .list-items {
+        display: flex;
+        div {
+            padding-left: 10px;
+        }
+    }
+    
+}
