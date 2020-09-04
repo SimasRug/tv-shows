@@ -6,7 +6,7 @@ import { IAppState } from 'src/app/types/root.type';
 import { SocketActions } from 'src/app/actions/socket.actions';
 import { ProgramActions } from 'src/app/actions/programs.actions';
 import { Ierror } from 'src/app/types/socket.type';
-import { ITvProgramInfo, ITvProgram, IProgramCast, IProgramEpisode } from 'src/app/types/program.type';
+import { ITvProgramInfo, ITvProgram, IProgramCast, IProgramEpisode, ISearchedPrograms } from 'src/app/types/program.type';
 
 
 
@@ -40,7 +40,7 @@ export class SocketioService {
 
     });
 
-    this.socket.on('shows-found', (val: ITvProgram[] ) => {
+    this.socket.on('shows-found', (val: ISearchedPrograms[]) => {
       this.ngRedux.dispatch(this.programActions.programsFound(val));
       this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(val));
     });
@@ -63,7 +63,7 @@ export class SocketioService {
   searchProgram(program: string) {
     this.socket.emit('search-program', program);
   }
-  getSelectedProgramDetails(programId) {
+  getSelectedProgramDetails(programId: number) {
     this.socket.emit('get-cast', programId);
     this.socket.emit('get-episodes', programId); 
   }

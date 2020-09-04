@@ -4,6 +4,9 @@ import { IAppState } from 'src/app/types/root.type';
 import { ProgramActions } from 'src/app/actions/programs.actions';
 import { Router } from '@angular/router';
 import { ShowSortService } from 'src/app/services/sorting/show-sort.service';
+import { ITvProgram, ITvProgramInfo, ISearchedPrograms } from 'src/app/types/program.type';
+import { Observable } from 'rxjs';
+import { Isort } from 'src/app/types/sort.types';
 
 
 @Component({
@@ -13,10 +16,10 @@ import { ShowSortService } from 'src/app/services/sorting/show-sort.service';
 })
 export class SearchContainerComponent implements OnInit {
 
-  @select(['programs', 'searchedProgram']) readonly programs$;
-  @select(['programs', 'searchedSortedProgram']) readonly filteredPrograms$;
+  @select(['programs', 'searchedProgram']) readonly programs$: Observable<ISearchedPrograms[]>;
+  @select(['programs', 'searchedSortedProgram']) readonly filteredPrograms$: Observable<ITvProgramInfo[]>;
 
-  programs;
+  programs: ISearchedPrograms[];
 
   constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions, private router: Router, private sortService: ShowSortService) {
     this.programs$.subscribe(val => {
@@ -33,7 +36,7 @@ export class SearchContainerComponent implements OnInit {
     this.router.navigate([`show/${name}`]);
   }
 
-  sortProg(val) {
+  sortProg(val: Isort) {
     this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(this.sortService.sort(this.programs, val)));
   }
 

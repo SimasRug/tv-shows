@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { ITvProgramInfo, ITvProgram, IProgramCast, IProgramEpisode } from '../types/program.type';
+import { ITvProgramInfo, ITvProgram, IProgramCast, IProgramEpisode, ISearchedPrograms } from '../types/program.type';
 
 
 
@@ -43,7 +43,7 @@ export class ProgramActions {
     };
   }
 
-  programsFound(payload: ITvProgram[]) {
+  programsFound(payload: ISearchedPrograms[]) {
     return {
       type: ProgramActions.PROGRAM_FOUND,
       payload
@@ -67,7 +67,7 @@ export class ProgramActions {
       payload
     };
   }
-  sortSearchedPrograms(payload: ITvProgram[] ) {
+  sortSearchedPrograms(payload: ISearchedPrograms[] ) {
     return {
       type: ProgramActions.PROGRAM_SEARCHED_SORTED,
       payload

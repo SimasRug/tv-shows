@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ITvProgramInfo, ITvProgram, ISearchedPrograms } from 'src/app/types/program.type';
+import { Isort } from 'src/app/types/sort.types';
 
 @Injectable({
   providedIn: 'root'
@@ -8,41 +10,49 @@ export class ShowSortService {
   constructor() { }
 
 
- nestedSortByValue(obj, val) {
-    return obj.sort((a, b) =>  (a.show[val] > b.show[val]) ? 1 : -1)
- }
-
- sortByValue(obj, val) {
-  return obj.sort((a, b) =>  (a[val] > b[val]) ? 1 : -1)
-}
-
- reverse(obj, val) {
-    return  this.sortByValue(obj, val).reverse()
+  nestedSortByValue(obj, val: string) {
+    return obj.sort((a, b) => (a.show[val] > b.show[val]) ? 1 : -1)
   }
 
-  nestedReverse(obj, val) {
-    return  this.nestedSortByValue(obj, val).reverse()
+  sortByValue(obj, val: string) {
+    console.warn(obj);
+    return obj.sort((a, b) => (a[val] > b[val]) ? 1 : -1)
   }
 
-  sort(obj, val: {direction: string, tag: string, nested: boolean}) {
+  reverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string) {
+    return this.sortByValue(obj, val).reverse()
+  }
 
-    if(val.direction === 'normal') {
-      return val.nested ? this.nestedSortByValue(obj, val.tag) :  this.sortByValue(obj, val.tag);
-    
+  nestedReverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string) {
+    return this.nestedSortByValue(obj, val).reverse()
+  }
+
+  sort(obj : ITvProgramInfo[] | ISearchedPrograms[], val: Isort) {
+
+    console.warn(obj);
+
+    if (val.direction === 'normal') {
+      return val.nested ? this.nestedSortByValue(obj, val.tag) : this.sortByValue(obj, val.tag);
+
     }
-    if(val.direction === 'reverse') {
-      return val.nested ? this.nestedReverse(obj, val.tag) :  this.reverse(obj, val.tag);
+    if (val.direction === 'reverse') {
+      return val.nested ? this.nestedReverse(obj, val.tag) : this.reverse(obj, val.tag);
     }
 
   }
 
-  filterName(obj, val) {
-    return obj.filter(({show: {name}}) => name.toLowerCase().includes(val.toLowerCase()));
+  filterName(obj, val: string) {
+    return obj.filter(({ show: { name } }) => name.toLowerCase().includes(val.toLowerCase()));
 
   }
 
-  filterGenre(obj, val) {
-    return obj.filter(({show: {genres}}) => genres.includes(val));
+  filterGenre( obj, val: string) {
+
+    return obj.filter(({ genres }) => genres.includes(val));
+  }
+
+  determineType(obj: ITvProgramInfo | ITvProgram): obj is ITvProgramInfo {
+    return (<ITvProgramInfo>obj).show !== undefined;
   }
 
 

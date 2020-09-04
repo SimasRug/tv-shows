@@ -1,9 +1,9 @@
 export interface ITvProgramsInfo {
     programsInfo: ITvProgramInfo[];
-    searchedProgram: ITvProgram[];
+    searchedProgram: ISearchedPrograms[];
     shows: ITvProgram[];
     sortedPrograms: ITvProgramInfo[];
-    searchedSortedProgram: ITvProgramInfo[];
+    searchedSortedProgram: ISearchedPrograms[];
     selectedProgram: ITvProgram;
     cast: IProgramCast[];
     episodes: IProgramEpisode[];
@@ -22,6 +22,11 @@ export interface ITvProgramInfo {
     show: ITvProgram;
     summary: string;
     url: string;
+}
+
+export interface ISearchedPrograms {
+    score: number;
+    show: ITvProgram;
 }
 
 export interface ITvProgram {

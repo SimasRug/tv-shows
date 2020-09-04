@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import { ShowSortService } from 'src/app/services/sorting/show-sort.service';
 import { SocketioService } from 'src/app/services/socket-io/socketio.service';
 import { Observable } from 'rxjs';
-import { ITvProgramInfo } from 'src/app/types/program.type';
+import { ITvProgramInfo, ITvProgram } from 'src/app/types/program.type';
+import { Isort } from 'src/app/types/sort.types';
 
 
 
@@ -21,7 +22,7 @@ export class TodaysShowsComponent implements OnInit {
   @select(['programs', 'sortedPrograms']) readonly todaysPrograms$: Observable<ITvProgramInfo[]>;
   @select(['programs', 'programsInfo']) readonly todaysProgramsOrg$: Observable<ITvProgramInfo[]>;
 
-  programs;
+  programs: ITvProgramInfo[];
 
 
   constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions, private router: Router, private sortService: ShowSortService, private socketService: SocketioService) {
@@ -33,14 +34,14 @@ export class TodaysShowsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectProgram(program) {
+  selectProgram(program: ITvProgram) {
     this.ngRedux.dispatch(this.programActions.programSelected(program));
     this.socketService.getSelectedProgramDetails(program.id);
     const { name } = program;
     this.router.navigate([`show/${name}`]);
   }
 
-  sort(val) {
+  sort(val: Isort) {
     this.ngRedux.dispatch(this.programActions.sortPrograms(this.sortService.sort(this.programs, val)));
   }
 
