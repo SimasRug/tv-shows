@@ -84,10 +84,10 @@ describe('TodaysShowsComponent', () => {
   });
 
   it('should test filterByGenre', () => {
-    const sortPar = 'Action';
+    // const sortPar = 'Action';
     component.programs = [todayShow];
     const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
-    component.filterByGenre(sortPar);
+    component.filterByGenre('Action');
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SORTED, payload: [todayShow] });
 
   });

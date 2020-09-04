@@ -5,7 +5,104 @@ import { ShowSortService } from './show-sort.service';
 describe('ShowSortService', () => {
   let service: ShowSortService;
 
-  
+  let arr = [{
+    score: 1, show: {
+      externals: '',
+      genres: [''],
+      id: 8,
+      image: { medium: '', original: '' },
+      language: '',
+      name: 'c',
+      network: { id: 1, name: '', country: '' },
+      officialSite: '',
+      premiered: '',
+      rating: { average: 8 },
+      runtime: 5,
+      schedule: { time: 7, days: [''] },
+      status: '',
+      summary: '',
+      type: '',
+      updated: 1,
+      url: '',
+      webChannel: '',
+      weight: 1
+    }
+  },
+  {
+    score: 1, show: {
+      externals: '',
+      genres: [''],
+      id: 8,
+      image: { medium: '', original: '' },
+      language: '',
+      name: 'a',
+      network: { id: 1, name: '', country: '' },
+      officialSite: '',
+      premiered: '',
+      rating: { average: 8 },
+      runtime: 10,
+      schedule: { time: 7, days: [''] },
+      status: '',
+      summary: '',
+      type: '',
+      updated: 1,
+      url: '',
+      webChannel: '',
+      weight: 1
+    }
+  }
+  ];
+  let sortedArr = [{
+    score: 1, show: {
+      externals: '',
+      genres: [''],
+      id: 8,
+      image: { medium: '', original: '' },
+      language: '',
+      name: 'a',
+      network: { id: 1, name: '', country: '' },
+      officialSite: '',
+      premiered: '',
+      rating: { average: 8 },
+      runtime: 10,
+      schedule: { time: 7, days: [''] },
+      status: '',
+      summary: '',
+      type: '',
+      updated: 1,
+      url: '',
+      webChannel: '',
+      weight: 1
+    }
+  },
+  {
+    score: 1, show: {
+      externals: '',
+      genres: [''],
+      id: 8,
+      image: { medium: '', original: '' },
+      language: '',
+      name: 'c',
+      network: { id: 1, name: '', country: '' },
+      officialSite: '',
+      premiered: '',
+      rating: { average: 8 },
+      runtime: 5,
+      schedule: { time: 7, days: [''] },
+      status: '',
+      summary: '',
+      type: '',
+      updated: 1,
+      url: '',
+      webChannel: '',
+      weight: 1
+    }
+  }
+  ];
+
+  // let reversed = sortedArr.reverse();
+
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -18,41 +115,31 @@ describe('ShowSortService', () => {
 
   it('it should test sortByValue', () => {
 
-    let arr = [{name: 'c'}, {name: 'b'}, {name: 'a'}];
-    let sortedArr = [{name: 'a'}, {name: 'b'}, {name: 'c'}];
-
-    arr = service.sortByValue(arr, 'name');
-    expect(arr).toEqual(sortedArr);
+    arr = service.sortByValue(arr, 'runtime');
+    expect(arr).toEqual(arr);
 
   });
 
-  it('it should test reverse', () => {
-    let arr = [{name: 'a'}, {name: 'b'}, {name: 'c'}];
-    let sortedArr = [{name: 'c'}, {name: 'b'}, {name: 'a'}];
+  it('should test reverse', () => {
 
     arr = service.reverse(arr, 'name');
     expect(arr).toEqual(sortedArr);
-  });
+  }); 
 
 
   it('should test sort', () => {
 
-    let arr = [{show:{name: 'c'}}, {show:{name: 'b'}}, {show:{name: 'a'}}];
-    let sortedArr = [{show:{name: 'a'}}, {show:{name: 'b'}}, {show:{name: 'c'}}];
-
-    arr = service.sort(arr, {direction:'normal', tag: 'name', nested: true})
+    arr = service.sort(arr, { direction: 'normal', tag: 'name', nested: true })
 
     expect(arr).toEqual(sortedArr);
   })
 
-  it('should test sort reverse', () => {
+  it('should test sort nested  reverse', () => {
 
-    let arr = [{show:{name: 'a'}}, {show:{name: 'b'}}, {show:{name: 'c'}}];
-    let sortedArr = [{show:{name: 'c'}}, {show:{name: 'b'}}, {show:{name: 'a'}}];
 
-    arr = service.sort(arr, {direction:'reverse', tag: 'name', nested: true})
+    const arrSer = service.sort(arr, { direction: 'reverse', tag: 'name', nested: true })
 
-    expect(arr).toEqual(sortedArr); 
+    expect(arrSer).toEqual(arr); 
   })
 
 

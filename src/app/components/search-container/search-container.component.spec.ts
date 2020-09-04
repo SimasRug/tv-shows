@@ -40,7 +40,6 @@ describe('SearchContainerComponent', () => {
   });
 
   it('should test filterProg dispatch with value', () => {
-    component.programs = ['foo', 'bar'];
     const service = TestBed.get(ShowSortService);
     spyOn(service, 'filterName').and.callFake(() => 'foo');
     const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');

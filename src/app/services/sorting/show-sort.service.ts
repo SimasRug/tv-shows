@@ -27,9 +27,7 @@ export class ShowSortService {
     return this.nestedSortByValue(obj, val).reverse()
   }
 
-  sort(obj : ITvProgramInfo[] | ISearchedPrograms[], val: Isort) {
-
-    console.warn(obj);
+  sort(obj: ITvProgramInfo[] | ISearchedPrograms[], val: Isort) {
 
     if (val.direction === 'normal') {
       return val.nested ? this.nestedSortByValue(obj, val.tag) : this.sortByValue(obj, val.tag);
@@ -46,9 +44,9 @@ export class ShowSortService {
 
   }
 
-  filterGenre( obj, val: string) {
-
-    return obj.filter(({ genres }) => genres.includes(val));
+  filterGenre(obj, val: string) {
+    console.warn(obj);
+    return obj.filter(({ show: { genres } }) => genres.includes(val));
   }
 
   determineType(obj: ITvProgramInfo | ITvProgram): obj is ITvProgramInfo {
