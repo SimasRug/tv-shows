@@ -9,6 +9,27 @@ import { ShowSortService } from 'src/app/services/sorting/show-sort.service';
 describe('SearchContainerComponent', () => {
   let component: SearchContainerComponent;
   let fixture: ComponentFixture<SearchContainerComponent>;
+  const tvProg = {
+    externals: '',
+    genres: [''],
+    id: 1,
+    image: { medium: '', original: '' },
+    language: '',
+    name: '',
+    network: { id: 1, name: '', country: '' },
+    officialSite: '',
+    premiered: '',
+    rating: { average: 1 },
+    runtime: 1500,
+    schedule: { time: 1, days: [''] },
+    status: '',
+    summary: '',
+    type: '',
+    updated: 43,
+    url: '',
+    webChannel: '',
+    weight: 5,
+}
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,8 +48,8 @@ describe('SearchContainerComponent', () => {
 
   it('should test selectProgram dispatch', () => {
     const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
-    component.selectProgram('foo');
-    expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SELECTED, payload: 'foo' });
+    component.selectProgram(tvProg);
+    expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SELECTED, payload: tvProg });
   });
 
   it('should test sortProg dispatch', () => {

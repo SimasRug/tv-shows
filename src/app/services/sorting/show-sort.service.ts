@@ -15,7 +15,6 @@ export class ShowSortService {
   }
 
   sortByValue(obj, val: string) {
-    console.warn(obj);
     return obj.sort((a, b) => (a[val] > b[val]) ? 1 : -1)
   }
 
@@ -39,20 +38,13 @@ export class ShowSortService {
 
   }
 
-  filterName(obj, val: string) {
-    return obj.filter(({ show: { name } }) => name.toLowerCase().includes(val.toLowerCase()));
+  filterName(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string): any  {
+    return (obj as Array<ITvProgramInfo | ISearchedPrograms>).filter(({ show: { name } }) => name.toLowerCase().includes(val.toLowerCase()));
 
   }
 
-  filterGenre(obj, val: string) {
-    console.warn(obj);
-    return obj.filter(({ show: { genres } }) => genres.includes(val));
+  filterGenre(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string): any {
+    return (obj as Array<ITvProgramInfo | ISearchedPrograms>).filter(({ show: { genres } }) => genres.includes(val));
   }
-
-  determineType(obj: ITvProgramInfo | ITvProgram): obj is ITvProgramInfo {
-    return (<ITvProgramInfo>obj).show !== undefined;
-  }
-
-
 
 }

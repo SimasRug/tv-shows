@@ -15,7 +15,6 @@ export class SortingComponent implements OnInit {
   sortingItems = [
     { name: 'Name', tag: 'name', nested: true },
     { name: 'Runtime', tag: 'runtime', nested: false },
-    // { name: 'Rating', tag: 'rating' }
   ];
 
   activeSort = { name: '', orientation: '' };
@@ -35,7 +34,7 @@ export class SortingComponent implements OnInit {
   }
 
 
-  sortItems(index, tag, nested) {
+  sortItems(index: number, tag: string, nested: boolean) {
 
     if (this.sortingItems[index].name === this.activeSort.name) {
 
@@ -55,10 +54,10 @@ export class SortingComponent implements OnInit {
     }
 
   }
-  filter(val) {
+  filter(val: string) {
     this.filterList.emit(val);
   }
-  option(val) {
+  option(val: string) {
     this.selectOption.emit(val);
   }
 

@@ -30,7 +30,7 @@ export class SearchContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectProgram(program) {
+  selectProgram(program: ITvProgram) {
     this.ngRedux.dispatch(this.programActions.programSelected(program));
     const { name } = program;
     this.router.navigate([`show/${name}`]);
@@ -50,7 +50,9 @@ export class SearchContainerComponent implements OnInit {
       return;
     }
 
-    this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(this.sortService.filterName(this.programs, val)));
+    const sortedVal = this.sortService.filterName(this.programs, val);
+    this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(sortedVal));
+
   }
 
   filterByGenre(genre: string) {
@@ -61,8 +63,13 @@ export class SearchContainerComponent implements OnInit {
         this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(programsCopy));
         return;
       }
-      this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(this.sortService.filterGenre(this.programs, genre)));
+      const sortedVal = this.sortService.filterGenre(this.programs, genre)
+      this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(sortedVal));
     });
 
+  }
+
+  determineType(obj: ITvProgramInfo | ISearchedPrograms): obj is ITvProgramInfo {
+    return (<ISearchedPrograms>obj).score !== undefined;
   }
 }
