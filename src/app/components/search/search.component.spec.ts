@@ -8,7 +8,7 @@ describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
   let de: DebugElement;
-  let button: ElementRef
+  let button: ElementRef;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +31,7 @@ describe('SearchComponent', () => {
 
   it('should emit on findProgram', () => {
     spyOn(component.searchProgram, 'emit');
-    component.findProgram('test')
-    expect(component.searchProgram.emit).toHaveBeenCalled(); 
-  }); 
+    component.findProgram('test');
+    expect(component.searchProgram.emit).toHaveBeenCalled();
+  });
 });

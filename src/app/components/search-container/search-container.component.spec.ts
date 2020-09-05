@@ -29,7 +29,7 @@ describe('SearchContainerComponent', () => {
     url: '',
     webChannel: '',
     weight: 5,
-}
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -53,18 +53,18 @@ describe('SearchContainerComponent', () => {
   });
 
   it('should test sortProg dispatch', () => {
-    const service = TestBed.get(ShowSortService);
+    const service = TestBed.inject(ShowSortService);
     spyOn(service, 'sort').and.callFake(() => 'foo');
     const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
-    component.sortProg({direction: 'normal', tag: 'name', nested: true})
+    component.sortProg({ direction: 'normal', tag: 'name', nested: true });
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SEARCHED_SORTED, payload: 'foo' });
   });
 
   it('should test filterProg dispatch with value', () => {
-    const service = TestBed.get(ShowSortService);
+    const service = TestBed.inject(ShowSortService);
     spyOn(service, 'filterName').and.callFake(() => 'foo');
     const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
-    component.filterProg('foo')
+    component.filterProg('foo');
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SEARCHED_SORTED, payload: 'foo' });
   });
 });

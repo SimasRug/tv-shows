@@ -25,21 +25,21 @@ describe('ShowsComponent', () => {
   it('should emit on sortingPrograms', () => {
     spyOn(component.sortPrograms, 'emit');
     component.sortingPrograms({direction: 'normal', tag: 'show', nested: false});
-    expect(component.sortPrograms.emit).toHaveBeenCalledWith({direction: 'normal', tag: 'show', nested: false}); 
-  }); 
+    expect(component.sortPrograms.emit).toHaveBeenCalledWith({direction: 'normal', tag: 'show', nested: false});
+  });
   it('should emit on filterByText', () => {
     spyOn(component.filterPrograms, 'emit');
-    component.filterByText('test')
+    component.filterByText('test');
     expect(component.filterPrograms.emit).toHaveBeenCalledWith('test');
   });
   it('should emit on selectedOption', () => {
     spyOn(component.selectedGenre, 'emit');
-    component.selectedOption('test')
-    expect(component.selectedGenre.emit).toHaveBeenCalledWith('test'); 
+    component.selectedOption('test');
+    expect(component.selectedGenre.emit).toHaveBeenCalledWith('test');
   });
   it('should emit on selectProgram', () => {
     spyOn(component.selectedProgram, 'emit');
-    component.selectProgram({show: 'test'})
-    expect(component.selectedProgram.emit).toHaveBeenCalledWith('test'); 
+    component.selectProgram({show: 'test'});
+    expect(component.selectedProgram.emit).toHaveBeenCalledWith('test');
   });
 });

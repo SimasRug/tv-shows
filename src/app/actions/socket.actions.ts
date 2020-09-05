@@ -11,19 +11,19 @@ export class SocketActions {
   static readonly CONNECTION_LOST = 'CONNECTION_LOST';
   static readonly API_ERROR = 'API_ERROR';
 
-  connectionSucceeded() {
+  connectionSucceeded(): { type: string } {
     return {
       type: SocketActions.CONNECTION_SUCCEEDED,
     };
   }
 
-  connectionLost() {
+  connectionLost(): { type: string } {
     return {
       type: SocketActions.CONNECTION_LOST,
     };
   }
 
-  apiError(payload: Ierror ) {
+  apiError(payload: Ierror): { type: string, payload: Ierror } {
     return {
       type: SocketActions.API_ERROR,
       payload,

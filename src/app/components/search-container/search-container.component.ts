@@ -21,10 +21,11 @@ export class SearchContainerComponent implements OnInit {
 
   programs: ISearchedPrograms[];
 
-  constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions, private router: Router, private sortService: ShowSortService) {
+  constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions,
+    private router: Router, private sortService: ShowSortService) {
     this.programs$.subscribe(val => {
       this.programs = [...val];
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -43,8 +44,8 @@ export class SearchContainerComponent implements OnInit {
   filterProg(val: string) {
 
     if (val === '') {
-      this.programs$.subscribe(val => {
-        const programsCopy = [...val];
+      this.programs$.subscribe(prog => {
+        const programsCopy = [...prog];
         this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(programsCopy));
       });
       return;
@@ -57,13 +58,13 @@ export class SearchContainerComponent implements OnInit {
 
   filterByGenre(genre: string) {
 
-    this.programs$.subscribe(val => {
-      const programsCopy = [...val];
+    this.programs$.subscribe(prog => {
+      const programsCopy = [...prog];
       if (genre === '') {
         this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(programsCopy));
         return;
       }
-      const sortedVal = this.sortService.filterGenre(this.programs, genre)
+      const sortedVal = this.sortService.filterGenre(this.programs, genre);
       this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(sortedVal));
     });
 

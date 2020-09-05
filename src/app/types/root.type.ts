@@ -1,7 +1,7 @@
-import { ISocket } from "./socket.type";
-import { ITvProgramsInfo} from "./program.type";
+import { ISocket } from './socket.type';
+import { ITvProgramsInfo } from './program.type';
 
 export interface IAppState {
-    socket: ISocket
-    tvPrograms:  ITvProgramsInfo
+    socket: ISocket;
+    tvPrograms:  ITvProgramsInfo;
 }

@@ -16,58 +16,58 @@ export class ProgramActions {
   static readonly PROGRAM_SORTED = 'PROGRAM_SORTED';
   static readonly PROGRAM_SEARCHED_SORTED = 'PROGRAM_SEARCHED_SORTED';
 
-  programsLoaded(payload: ITvProgramInfo[]) {
+  programsLoaded(payload: ITvProgramInfo[]): {type: string, payload: ITvProgramInfo[]} {
     return {
       type: ProgramActions.PROGRAMS_LOADED,
       payload
     };
   }
-  showsLoaded(payload: ITvProgram[]) {
+  showsLoaded(payload: ITvProgram[]): {type: string, payload: ITvProgram[]} {
     return {
       type: ProgramActions.SHOWS_LOADED,
       payload
     };
   }
 
-  programLoadFailed(payload) {
-    return {
-      type: ProgramActions.PROGRAMS_FAILED,
-      payload
-    };
-  }
+  // programLoadFailed(payload) {
+  //   return {
+  //     type: ProgramActions.PROGRAMS_FAILED,
+  //     payload
+  //   };
+  // }
 
-  programSelected(payload: ITvProgram) {
+  programSelected(payload: ITvProgram): {type: string, payload: ITvProgram} {
     return {
       type: ProgramActions.PROGRAM_SELECTED,
       payload
     };
   }
 
-  programsFound(payload: ISearchedPrograms[]) {
+  programsFound(payload: ISearchedPrograms[]): {type: string, payload: ISearchedPrograms[]} {
     return {
       type: ProgramActions.PROGRAM_FOUND,
       payload
     };
   }
-  programCastFound(payload: IProgramCast[]) {
+  programCastFound(payload: IProgramCast[]): {type: string, payload: IProgramCast[]} {
     return {
       type: ProgramActions.PROGRAM_CAST_FOUND,
       payload
     };
   }
-  programEpisodesFound(payload: IProgramEpisode[]) {
+  programEpisodesFound(payload: IProgramEpisode[]): {type: string, payload: IProgramEpisode[]} {
     return {
       type: ProgramActions.PROGRAM_EPISODES_FOUND,
       payload
     };
   }
-  sortPrograms(payload: ITvProgramInfo[] ) {
+  sortPrograms(payload: ITvProgramInfo[] ): {type: string, payload: ITvProgramInfo[]} {
     return {
       type: ProgramActions.PROGRAM_SORTED,
       payload
     };
   }
-  sortSearchedPrograms(payload: ISearchedPrograms[] ) {
+  sortSearchedPrograms(payload: ISearchedPrograms[] ): {type: string, payload: ISearchedPrograms[]} {
     return {
       type: ProgramActions.PROGRAM_SEARCHED_SORTED,
       payload

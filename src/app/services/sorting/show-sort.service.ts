@@ -11,19 +11,19 @@ export class ShowSortService {
 
 
   nestedSortByValue(obj, val: string) {
-    return obj.sort((a, b) => (a.show[val] > b.show[val]) ? 1 : -1)
+    return obj.sort((a, b) => (a.show[val] > b.show[val]) ? 1 : -1);
   }
 
   sortByValue(obj, val: string) {
-    return obj.sort((a, b) => (a[val] > b[val]) ? 1 : -1)
+    return obj.sort((a, b) => (a[val] > b[val]) ? 1 : -1);
   }
 
   reverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string) {
-    return this.sortByValue(obj, val).reverse()
+    return this.sortByValue(obj, val).reverse();
   }
 
   nestedReverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string) {
-    return this.nestedSortByValue(obj, val).reverse()
+    return this.nestedSortByValue(obj, val).reverse();
   }
 
   sort(obj: ITvProgramInfo[] | ISearchedPrograms[], val: Isort) {
@@ -39,7 +39,8 @@ export class ShowSortService {
   }
 
   filterName(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string): any  {
-    return (obj as Array<ITvProgramInfo | ISearchedPrograms>).filter(({ show: { name } }) => name.toLowerCase().includes(val.toLowerCase()));
+    return (obj as Array<ITvProgramInfo | ISearchedPrograms>).filter(
+      ({ show: { name } }) => name.toLowerCase().includes(val.toLowerCase()));
 
   }
 

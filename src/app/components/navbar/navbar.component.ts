@@ -15,10 +15,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  searchForProgram(program: string) {
+  searchForProgram(program: string): void {
     this.socketService.searchProgram(program);
     this.router.navigate(['search']);
-    
   }
 
 }

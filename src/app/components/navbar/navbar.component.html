@@ -19,8 +19,8 @@
     <mat-sidenav #sidenav>
       <mat-nav-list>
 
-        <a mat-list-item routerLink="/live-today" routerLinkActive="active">Live Today</a>
-        <app-search class="appSearch" mat-list-item (searchProgram)="searchForProgram($event)"></app-search>
+        <a mat-list-item routerLink="/live-today" routerLinkActive="active" (click)="sidenav.toggle()">Live Today</a>
+        <app-search class="appSearch" mat-list-item (searchProgram)="searchForProgram($event); sidenav.toggle()"></app-search>
 
       </mat-nav-list>
     </mat-sidenav>

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Isort } from '../../types/sort.types'
-import { ITvProgram } from 'src/app/types/program.type';
+import { Isort } from '../../types/sort.types';
 
 @Component({
   selector: 'app-shows',
@@ -10,10 +9,10 @@ import { ITvProgram } from 'src/app/types/program.type';
 export class ShowsComponent implements OnInit {
 
   @Input() programList;
-  @Output() selectedProgram = new EventEmitter;
-  @Output() sortPrograms = new EventEmitter;
-  @Output() filterPrograms = new EventEmitter;
-  @Output() selectedGenre = new EventEmitter;
+  @Output() selectedProgram = new (EventEmitter);
+  @Output() sortPrograms = new (EventEmitter);
+  @Output() filterPrograms = new(EventEmitter);
+  @Output() selectedGenre = new (EventEmitter);
 
 
 

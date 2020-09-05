@@ -13,11 +13,11 @@ export class AppComponent implements OnInit {
 
 
 
-  constructor(private socketioService: SocketioService,) {
+  constructor(private socketioService: SocketioService) {
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.socketioService.getSchedule();
 
   }

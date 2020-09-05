@@ -1,6 +1,6 @@
 export interface Isort {
     direction: string;
-    tag: string,
-    nested: boolean
-
+    tag: string;
+    nested: boolean;
+    
 }

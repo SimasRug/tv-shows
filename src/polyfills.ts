@@ -84,8 +84,8 @@ import 'core-js/es7/reflect';
  */
 
 if (document['documentMode'] || /Edge/.test(navigator.userAgent)) {
-    (window as any).__Zone_enable_cross_context_check = true;
-  }
+  (window as any).__Zone_enable_cross_context_check = true;
+}
 
 (window as any).global = window; // Temporary workaround for socket-io https://github.com/socketio/socket.io-client/issues/1166
 

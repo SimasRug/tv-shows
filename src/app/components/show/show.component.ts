@@ -17,7 +17,7 @@ export class ShowComponent implements OnInit {
   @select(['programs', 'episodes']) readonly episodes$: Observable<IProgramEpisode[]>;
 
   program: ITvProgram;
-  cast : IProgramCast[];
+  cast: IProgramCast[];
   episodes: IProgramEpisode[];
 
   constructor(private router: Router, changeDetectorRef: ChangeDetectorRef) {
@@ -26,17 +26,17 @@ export class ShowComponent implements OnInit {
     });
     this.cast$.subscribe(val => {
       this.cast = val;
-    })
+    });
     this.episodes$.subscribe(val => {
       this.episodes = val;
-    })
+    });
   }
 
   ngOnInit(): void {
 
     // TODO fix this solution
     this.program$.subscribe((val) => {
-      if(val === undefined || decodeURI(this.router.url) !== `/show/${val.name}` ){
+      if(val === undefined || decodeURI(this.router.url) !== `/show/${val.name}` ) {
         this.router.navigate(['']);
       }
     });

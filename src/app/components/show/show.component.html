@@ -7,18 +7,20 @@
                     <h1 *ngIf="program?.name">{{program.name}}</h1>
                     <mat-card class="summary" [innerHTML]="program.summary">
                     </mat-card>
-                    <div mat-line> Air Time: {{program.schedule.time}}</div>
-                    <div mat-line> Air days: {{program.schedule.days}}</div>
-                    <div mat-line *ngIf="program.network?.name"> Channel: {{program.network.name}}</div>
+                    <mat-list>
+                        <mat-list-item>Air Time: {{program.schedule.time}}</mat-list-item>
+                        <mat-list-item>Air Days: {{program.schedule.days}}</mat-list-item>
+                        <mat-list-item *ngIf="program.network?.name">Channel: {{program.network.name}}</mat-list-item>
+                    </mat-list>
                 </div>
             </mat-card>
         </div>
     </mat-tab>
     <mat-tab label="Cast" *ngIf="cast">
-
         <cdk-virtual-scroll-viewport itemSize="10" class="example-viewport">
             <mat-card>
-                <div *ngIf="!cast?.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No cast provided</div>
+                <div *ngIf="!cast?.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No cast
+                    provided</div>
                 <mat-list>
                     <mat-list-item *cdkVirtualFor="let member of cast" class="example-item">
                         <div class="list-items">
@@ -31,20 +33,20 @@
                 </mat-list>
             </mat-card>
         </cdk-virtual-scroll-viewport>
-
     </mat-tab>
     <mat-tab label="Episodes" *ngIf="episodes">
 
 
         <cdk-virtual-scroll-viewport itemSize="10" class="example-viewport">
             <mat-card>
-                <div *ngIf="!episodes?.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No episodes provided</div>
+                <div *ngIf="!episodes?.length" fxLayout="row" fxLayoutAlign="center center" class="mat-display-1">No
+                    episodes provided</div>
                 <mat-list>
                     <mat-list-item *cdkVirtualFor="let episode of episodes" class="example-item">
-                            <img mat-card-avatar *ngIf="episode.image" src={{episode.image.medium}} alt="">
-                            <div mat-line> Episode name: {{episode.name}} </div>
-                            <div mat-line> Episode number: {{episode.number}} </div>
-                            <div mat-line> Episode date: {{episode.airdate}} </div>
+                        <img mat-card-avatar *ngIf="episode.image" src={{episode.image.medium}} alt="">
+                        <div mat-line> Episode name: {{episode.name}} </div>
+                        <div mat-line> Episode number: {{episode.number}} </div>
+                        <div mat-line> Episode date: {{episode.airdate}} </div>
                         <mat-divider></mat-divider>
                     </mat-list-item>
                 </mat-list>
