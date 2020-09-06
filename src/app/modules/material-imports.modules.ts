@@ -11,7 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
@@ -29,7 +29,7 @@ const imports = [
     MatSelectModule,
     MatTabsModule,
     ScrollingModule
-]
+];
 
 
 

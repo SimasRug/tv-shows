@@ -21,8 +21,12 @@ export class SearchContainerComponent implements OnInit {
 
   programs: ISearchedPrograms[];
 
-  constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions,
-    private router: Router, private sortService: ShowSortService) {
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private programActions: ProgramActions,
+    private router: Router,
+    private sortService: ShowSortService) {
+
     this.programs$.subscribe(val => {
       this.programs = [...val];
     });
@@ -31,17 +35,17 @@ export class SearchContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectProgram(program: ITvProgram) {
+  selectProgram(program: ITvProgram): void {
     this.ngRedux.dispatch(this.programActions.programSelected(program));
     const { name } = program;
     this.router.navigate([`show/${name}`]);
   }
 
-  sortProg(val: Isort) {
+  sortProg(val: Isort): void {
     this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(this.sortService.sort(this.programs, val)));
   }
 
-  filterProg(val: string) {
+  filterProg(val: string): void {
 
     if (val === '') {
       this.programs$.subscribe(prog => {
@@ -56,7 +60,7 @@ export class SearchContainerComponent implements OnInit {
 
   }
 
-  filterByGenre(genre: string) {
+  filterByGenre(genre: string): void {
 
     this.programs$.subscribe(prog => {
       const programsCopy = [...prog];
@@ -68,9 +72,5 @@ export class SearchContainerComponent implements OnInit {
       this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(sortedVal));
     });
 
-  }
-
-  determineType(obj: ITvProgramInfo | ISearchedPrograms): obj is ITvProgramInfo {
-    return (<ISearchedPrograms>obj).score !== undefined;
   }
 }

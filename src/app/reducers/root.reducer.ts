@@ -7,5 +7,5 @@ import { programReducer } from './program.reducer';
 
 export const rootReducer = combineReducers({
     socket: socketReducer,
-    programs: programReducer 
-})
+    programs: programReducer
+});

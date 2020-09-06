@@ -47,7 +47,7 @@ describe('SearchContainerComponent', () => {
   });
 
   it('should test selectProgram dispatch', () => {
-    const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
+    const spy = spyOn(MockNgRedux.getInstance(), 'dispatch');
     component.selectProgram(tvProg);
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SELECTED, payload: tvProg });
   });
@@ -55,7 +55,7 @@ describe('SearchContainerComponent', () => {
   it('should test sortProg dispatch', () => {
     const service = TestBed.inject(ShowSortService);
     spyOn(service, 'sort').and.callFake(() => 'foo');
-    const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
+    const spy = spyOn(MockNgRedux.getInstance(), 'dispatch');
     component.sortProg({ direction: 'normal', tag: 'name', nested: true });
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SEARCHED_SORTED, payload: 'foo' });
   });
@@ -63,7 +63,7 @@ describe('SearchContainerComponent', () => {
   it('should test filterProg dispatch with value', () => {
     const service = TestBed.inject(ShowSortService);
     spyOn(service, 'filterName').and.callFake(() => 'foo');
-    const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
+    const spy = spyOn(MockNgRedux.getInstance(), 'dispatch');
     component.filterProg('foo');
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SEARCHED_SORTED, payload: 'foo' });
   });

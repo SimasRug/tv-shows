@@ -7,10 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SortingComponent implements OnInit {
 
-  @Input() nonFunctioning
-  @Output() sortList = new EventEmitter;
-  @Output() filterList = new EventEmitter;
-  @Output() selectOption = new EventEmitter;
+  @Input() nonFunctioning;
+  @Output() sortList = new EventEmitter();
+  @Output() filterList = new EventEmitter();
+  @Output() selectOption = new EventEmitter();
 
   sortingItems = [
     { name: 'Name', tag: 'name', nested: true },
@@ -18,7 +18,7 @@ export class SortingComponent implements OnInit {
   ];
 
   activeSort = { name: '', orientation: '' };
-  filterText = ''
+  filterText = '';
   genres = ['', 'Action', 'Adult', 'Adventure', 'Anime', 'Children', 'Comedy', 'Crime', 'DIY', 'Drama',
     'Espionage', 'Family', 'Fantasy', 'Food', 'History', 'Horror', 'Legal', 'Medical', 'Music', 'Mystery',
     'Nature', 'Romance', 'Science-Fiction', 'Sports', 'Supernatural', 'Thriller', 'Travel', 'War', 'Western'];
@@ -27,14 +27,15 @@ export class SortingComponent implements OnInit {
   arrow = {
     up: 'arrow_upward',
     down: 'arrow_downward'
-  }
-  constructor() {}
+  };
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
 
-  sortItems(index: number, tag: string, nested: boolean) {
+  sortItems(index: number, tag: string, nested: boolean): void {
 
     if (this.sortingItems[index].name === this.activeSort.name) {
 
@@ -54,10 +55,10 @@ export class SortingComponent implements OnInit {
     }
 
   }
-  filter(val: string) {
+  filter(val: string): void {
     this.filterList.emit(val);
   }
-  option(val: string) {
+  option(val: string): void {
     this.selectOption.emit(val);
   }
 

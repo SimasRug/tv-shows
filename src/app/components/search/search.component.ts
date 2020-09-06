@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   }
 
 
-  findProgram(program: string) {
+  findProgram(program: string): void {
     this.searchProgram.emit(program);
   }
 

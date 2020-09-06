@@ -10,23 +10,23 @@ export class ShowSortService {
   constructor() { }
 
 
-  nestedSortByValue(obj, val: string) {
+  nestedSortByValue(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string): ITvProgramInfo[] | ISearchedPrograms[]  {
     return obj.sort((a, b) => (a.show[val] > b.show[val]) ? 1 : -1);
   }
 
-  sortByValue(obj, val: string) {
+  sortByValue(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string): ITvProgramInfo[] | ISearchedPrograms[] {
     return obj.sort((a, b) => (a[val] > b[val]) ? 1 : -1);
   }
 
-  reverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string) {
+  reverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string): ITvProgramInfo[] | ISearchedPrograms[] {
     return this.sortByValue(obj, val).reverse();
   }
 
-  nestedReverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string) {
+  nestedReverse(obj: ITvProgramInfo[] | ISearchedPrograms[], val: string): ITvProgramInfo[] | ISearchedPrograms[] {
     return this.nestedSortByValue(obj, val).reverse();
   }
 
-  sort(obj: ITvProgramInfo[] | ISearchedPrograms[], val: Isort) {
+  sort(obj: ITvProgramInfo[] | ISearchedPrograms[], val: Isort): any {
 
     if (val.direction === 'normal') {
       return val.nested ? this.nestedSortByValue(obj, val.tag) : this.sortByValue(obj, val.tag);

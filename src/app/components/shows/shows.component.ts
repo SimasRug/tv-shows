@@ -9,28 +9,28 @@ import { Isort } from '../../types/sort.types';
 export class ShowsComponent implements OnInit {
 
   @Input() programList;
-  @Output() selectedProgram = new (EventEmitter);
-  @Output() sortPrograms = new (EventEmitter);
-  @Output() filterPrograms = new(EventEmitter);
-  @Output() selectedGenre = new (EventEmitter);
+  @Output() selectedProgram = new EventEmitter();
+  @Output() sortPrograms = new EventEmitter();
+  @Output() filterPrograms = new EventEmitter();
+  @Output() selectedGenre = new EventEmitter();
 
 
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  sortingPrograms(val: Isort) {   
+  sortingPrograms(val: Isort): void {
     this.sortPrograms.emit(val);
   }
-  filterByText(val: string) { 
+  filterByText(val: string): void {
     this.filterPrograms.emit(val);
   }
-  selectedOption(val: string) {
+  selectedOption(val: string): void {
     this.selectedGenre.emit(val);
   }
-  selectProgram({show}) {
+  selectProgram({ show }): void {
     this.selectedProgram.emit(show);
   }
 

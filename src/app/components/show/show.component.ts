@@ -36,7 +36,7 @@ export class ShowComponent implements OnInit {
 
     // TODO fix this solution
     this.program$.subscribe((val) => {
-      if(val === undefined || decodeURI(this.router.url) !== `/show/${val.name}` ) {
+      if (val === undefined || decodeURI(this.router.url) !== `/show/${val.name}`) {
         this.router.navigate(['']);
       }
     });

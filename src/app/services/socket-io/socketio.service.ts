@@ -29,7 +29,7 @@ export class SocketioService {
     });
 
     this.socket.on('data-err', (val: Ierror) => {
-     this.ngRedux.dispatch(this.socketActions.apiError(val)); 
+     this.ngRedux.dispatch(this.socketActions.apiError(val));
     });
 
 
@@ -45,7 +45,7 @@ export class SocketioService {
       this.ngRedux.dispatch(this.programActions.sortSearchedPrograms(val));
     });
 
-    this.socket.on('cast-found', (val: IProgramCast[]) => {      
+    this.socket.on('cast-found', (val: IProgramCast[]) => {
       this.ngRedux.dispatch(this.programActions.programCastFound(val));
     });
 
@@ -57,16 +57,16 @@ export class SocketioService {
 
 
 
-  getSchedule() {
+  getSchedule(): void {
     this.socket.emit('get-tv-schedule');
   }
-  searchProgram(program: string) {
+  searchProgram(program: string): void {
     this.socket.emit('search-program', program);
   }
-  getSelectedProgramDetails(programId: number) {
+  getSelectedProgramDetails(programId: number): void {
     this.socket.emit('get-cast', programId);
-    this.socket.emit('get-episodes', programId); 
+    this.socket.emit('get-episodes', programId);
   }
 
-
 }
+

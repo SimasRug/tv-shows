@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ShowSortService } from './show-sort.service';
+import { ITvProgramInfo, ISearchedPrograms } from 'src/app/types/program.type';
+
 
 describe('ShowSortService', () => {
   let service: ShowSortService;
 
-  let arr = [{
-    score: 1, show: {
+  let arr: ITvProgramInfo[]| ISearchedPrograms[] = [{
+    score: 1,
+    show: {
       externals: '',
       genres: [''],
       id: 8,
@@ -29,7 +32,8 @@ describe('ShowSortService', () => {
     }
   },
   {
-    score: 1, show: {
+    score: 1,
+    show: {
       externals: '',
       genres: [''],
       id: 8,
@@ -52,8 +56,9 @@ describe('ShowSortService', () => {
     }
   }
   ];
-  let sortedArr = [{
-    score: 1, show: {
+  const sortedArr = [{
+    score: 1,
+    show: {
       externals: '',
       genres: [''],
       id: 8,
@@ -76,7 +81,8 @@ describe('ShowSortService', () => {
     }
   },
   {
-    score: 1, show: {
+    score: 1,
+    show: {
       externals: '',
       genres: [''],
       id: 8,
@@ -99,10 +105,6 @@ describe('ShowSortService', () => {
     }
   }
   ];
-
-  // let reversed = sortedArr.reverse();
-
-
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -124,23 +126,22 @@ describe('ShowSortService', () => {
 
     arr = service.reverse(arr, 'name');
     expect(arr).toEqual(sortedArr);
-  }); 
+  });
 
 
   it('should test sort', () => {
-
-    arr = service.sort(arr, { direction: 'normal', tag: 'name', nested: true })
+    arr = service.sort(arr, { direction: 'normal', tag: 'name', nested: true });
 
     expect(arr).toEqual(sortedArr);
-  })
+  });
 
   it('should test sort nested  reverse', () => {
 
 
-    const arrSer = service.sort(arr, { direction: 'reverse', tag: 'name', nested: true })
+    const arrSer = service.sort(arr, { direction: 'reverse', tag: 'name', nested: true });
 
-    expect(arrSer).toEqual(arr); 
-  })
-
+    expect(arrSer).toEqual(arr);
+  });
 
 });
+

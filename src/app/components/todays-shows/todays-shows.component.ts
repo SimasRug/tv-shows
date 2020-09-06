@@ -25,31 +25,38 @@ export class TodaysShowsComponent implements OnInit {
   programs: ITvProgramInfo[];
 
 
-  constructor(private ngRedux: NgRedux<IAppState>, private programActions: ProgramActions, private router: Router, private sortService: ShowSortService, private socketService: SocketioService) {
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private programActions: ProgramActions,
+    private router: Router,
+    private sortService: ShowSortService,
+    private socketService: SocketioService) {
+
     this.todaysPrograms$.subscribe(val => {
       this.programs = [...val];
-    })
+    });
   }
 
   ngOnInit(): void {
   }
 
-  selectProgram(program: ITvProgram) {
+  selectProgram(program: ITvProgram): void {
     this.ngRedux.dispatch(this.programActions.programSelected(program));
     this.socketService.getSelectedProgramDetails(program.id);
     const { name } = program;
     this.router.navigate([`show/${name}`]);
   }
 
-  sort(val: Isort) {
+  sort(val: Isort): void {
+    const sortedVal = 
     this.ngRedux.dispatch(this.programActions.sortPrograms(this.sortService.sort(this.programs, val)));
   }
 
-  filter(val: string) {
+  filter(val: string): void {
 
     if (val === '') {
-      this.todaysProgramsOrg$.subscribe(val => {
-        const programsCopy = [...val];
+      this.todaysProgramsOrg$.subscribe(program => {
+        const programsCopy = [...program];
         this.ngRedux.dispatch(this.programActions.sortPrograms(programsCopy));
       });
       return;
@@ -58,7 +65,7 @@ export class TodaysShowsComponent implements OnInit {
     this.ngRedux.dispatch(this.programActions.sortPrograms(this.sortService.filterName(this.programs, val)));
   }
 
-  filterByGenre(genre: string) {
+  filterByGenre(genre: string): void {
 
     if (genre === '') {
       this.todaysProgramsOrg$.subscribe(val => {
@@ -67,7 +74,7 @@ export class TodaysShowsComponent implements OnInit {
       });
       return;
     }
-    
+
     this.ngRedux.dispatch(this.programActions.sortPrograms(this.sortService.filterGenre(this.programs, genre)));
 
   }

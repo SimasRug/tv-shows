@@ -30,7 +30,7 @@ describe('TodaysShowsComponent', () => {
     url: '',
     webChannel: '',
     weight: 1,
-  }
+  };
   const todayShow = {
     airdate: '',
     airstamp: '',
@@ -41,10 +41,10 @@ describe('TodaysShowsComponent', () => {
     number: 1,
     runtime: 1,
     season: 1,
-    show: show,
+    show,
     summary: '',
     url: '',
-  }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -66,8 +66,8 @@ describe('TodaysShowsComponent', () => {
   });
   it('should emit on sortItems', () => {
 
-    const sortPar = { direction: 'normal', tag: 'show', nested: false }
-    const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
+    const sortPar = { direction: 'normal', tag: 'show', nested: false };
+    const spy = spyOn(MockNgRedux.getInstance(), 'dispatch');
     component.programs = [todayShow, todayShow];
     component.sort(sortPar);
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SORTED, payload: [todayShow, todayShow] });
@@ -77,7 +77,7 @@ describe('TodaysShowsComponent', () => {
   it('should test filter', () => {
     const sortPar = 'empty';
     component.programs = [todayShow];
-    const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
+    const spy = spyOn(MockNgRedux.getInstance(), 'dispatch');
     component.filter(sortPar);
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SORTED, payload: [] });
 
@@ -86,14 +86,14 @@ describe('TodaysShowsComponent', () => {
   it('should test filterByGenre', () => {
     // const sortPar = 'Action';
     component.programs = [todayShow];
-    const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
+    const spy = spyOn(MockNgRedux.getInstance(), 'dispatch');
     component.filterByGenre('Action');
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SORTED, payload: [todayShow] });
 
   });
 
   it('should test select program', () => {
-    const spy = spyOn(MockNgRedux.mockInstance, 'dispatch');
+    const spy = spyOn(MockNgRedux.getInstance(), 'dispatch');
     component.selectProgram(show);
     expect(spy).toHaveBeenCalledWith({ type: ProgramActions.PROGRAM_SELECTED, payload: show });
 
