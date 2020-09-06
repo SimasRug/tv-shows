@@ -48,7 +48,6 @@ export class TodaysShowsComponent implements OnInit {
   }
 
   sort(val: Isort): void {
-    const sortedVal = 
     this.ngRedux.dispatch(this.programActions.sortPrograms(this.sortService.sort(this.programs, val)));
   }
 
